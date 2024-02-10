@@ -37,7 +37,7 @@ const createChannelAndRole = async (category, message, args) => {
       parent: categoryChannel.id,
       permissionOverwrites: [
         {
-          id: guild.roles.everyone.id, // Deny permissions for @everyone role
+          id: guild.roles.everyone.id, // Make the channel private
           deny: [PermissionsBitField.Flags.ViewChannel],
         },
         {
