@@ -3,7 +3,8 @@ import winston from '../config/winston.js';
 
 const logger = winston('command/release.js');
 
-const releaseAStory = async (message, releasedCategory) => {
+const releaseAStory = async message => {
+  const {releasedCategory} = process.env;
   const {roles} = message.mentions;
   const {guild} = message;
   let categoryChannel = message.guild.channels.cache.find(

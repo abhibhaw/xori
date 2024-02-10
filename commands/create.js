@@ -2,8 +2,11 @@ import {PermissionsBitField, ChannelType} from 'discord.js';
 import winston from '../config/winston.js';
 
 const logger = winston('create.js');
+const {category, prefix} = process.env;
 
-const createChannelAndRole = async (category, message, args) => {
+const createChannelAndRole = async message => {
+  const args = message.content.slice(prefix.length).trim().split(/ +/);
+  args.shift().toLowerCase();
   const roleName = args.join(' ').toLowerCase().replace(' ', '-');
   const {guild} = message;
   const categoryChannel = guild.channels.cache.find(
