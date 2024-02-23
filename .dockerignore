@@ -1,0 +1,7 @@
+.env.example
+.eslintignore
+.eslintrc
+.gitignore
+.prettierrc
+.prettierignore
+README.md
