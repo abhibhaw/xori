@@ -7,15 +7,27 @@ const {category, prefix} = process.env;
 const createChannelAndRole = async message => {
   const args = message.content.slice(prefix.length).trim().split(/ +/);
   args.shift().toLowerCase();
-  const roleName = args.join(' ').toLowerCase().replace(' ', '-');
+  const roleName = args[0].toLowerCase().replace(/[^a-zA-Z0-9]/g, '-');
+  args.shift().toLowerCase();
+  let categoryName;
+  if (args.length === 0) {
+    categoryName = category;
+  } else {
+    args.shift().toLowerCase();
+    categoryName = args[0].toLowerCase().replace(/[^a-zA-Z0-9]/g, '-');
+  }
   const {guild} = message;
-  const categoryChannel = guild.channels.cache.find(
+  let categoryChannel = guild.channels.cache.find(
     channel =>
-      channel.type === ChannelType.GuildCategory && channel.name === category,
+      channel.type === ChannelType.GuildCategory &&
+      channel.name === categoryName,
   );
 
   if (!categoryChannel) {
-    return message.channel.send('Category not found.');
+    categoryChannel = await guild.channels.create({
+      name: categoryName,
+      type: ChannelType.GuildCategory,
+    });
   }
 
   try {

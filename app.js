@@ -7,6 +7,7 @@ import {
   removeRoleFromUser,
   releaseAStory,
   addUserToRole,
+  deleteChannelAndRole,
 } from './commands/index.js';
 
 const logger = winston('app.js');
@@ -36,6 +37,7 @@ const commands = {
   add: addUserToRole,
   remove: removeRoleFromUser,
   release: releaseAStory,
+  delete: deleteChannelAndRole,
 };
 
 client.on('messageCreate', async message => {
