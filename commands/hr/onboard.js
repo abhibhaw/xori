@@ -1,7 +1,7 @@
 import {ChannelType} from 'discord.js';
-import winston from '../config/winston.js';
+import winston from '../../config/winston.js';
 
-const logger = winston('command/onboard.js');
+const logger = winston('command/hr/onboard.js');
 
 const {prefix, welcomeChannelName, welcomeMessage} = process.env;
 
