@@ -24,7 +24,7 @@ const client = new Client({
   ],
 });
 
-const {token, prefix, allowedUsers} = process.env;
+const {token, prefix, allowedUsers, category} = process.env;
 
 client.once('ready', () => {
   logger.info('Bot is online!');
@@ -44,6 +44,20 @@ const commands = {
   onboard: onboardUser,
   farewell: farewellUser,
   createrole: createRole,
+  help: message => {
+    message.channel.send(`
+      Available commands:
+      :hammer_and_wrench: create <name> - Create a channel and role for a new story in ${category} category.
+      :heavy_plus_sign: add <@user> <@role> - Add users to roles.
+      :heavy_minus_sign: remove <@user> <@role> - Remove a role from a user.
+      :newspaper: release <@name> - Deletes the role and archieve the story channel.
+      :x: delete <@name> - Deletes the channel and role of the story.
+      :wave: onboard <user_id> - Onboard a user to devtron-team.
+      :wave: farewell <@user> - Farewell a user. Removes all attached roles
+      :bookmark_tabs: createrole <name> - Create a new role with random color.
+      :question: help - Display available commands and their descriptions.
+    `);
+  },
 };
 
 client.on('messageCreate', async message => {
