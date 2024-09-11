@@ -42,6 +42,7 @@ const createChannelAndRole = async message => {
         PermissionsBitField.Flags.AttachFiles,
         PermissionsBitField.Flags.AddReactions,
         PermissionsBitField.Flags.UseExternalEmojis,
+        PermissionsBitField.Flags.MentionEveryone,
       ],
       reason: `Role for ${roleName} story.`,
     });
@@ -65,6 +66,7 @@ const createChannelAndRole = async message => {
             PermissionsBitField.Flags.AttachFiles,
             PermissionsBitField.Flags.AddReactions,
             PermissionsBitField.Flags.UseExternalEmojis,
+            PermissionsBitField.Flags.MentionEveryone,
           ],
         },
       ],

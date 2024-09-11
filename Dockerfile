@@ -6,12 +6,12 @@ WORKDIR /app
 
 COPY package.json /app/package.json
 
-COPY yarn.lock /app/yarn.lock
+COPY pnpm-lock.yaml /app/pnpm-lock.yaml
 
-RUN npm install -g --force yarn
+RUN npm install -g --force pnpm
 
-RUN yarn install --production --force --silent
+RUN pnpm install --production --force --silent
 
 COPY . /app/
 
-CMD ["yarn", "start"]
+CMD ["pnpm", "start"]
