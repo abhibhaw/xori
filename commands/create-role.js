@@ -10,12 +10,11 @@ const createRole = async message => {
     args.shift().toLowerCase();
     const roleName = args[0].toLowerCase().replace(/[^a-zA-Z0-9]/g, '-');
     const {guild} = message;
-    const roleColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`; // Random color
 
     const createdRole = await guild.roles.create({
       data: {
         name: roleName,
-        color: roleColor,
+        color: 'Random',
         permissions: [
           PermissionsBitField.Flags.ViewChannel,
           PermissionsBitField.Flags.SendMessages,

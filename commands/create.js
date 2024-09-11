@@ -20,7 +20,7 @@ const createChannelAndRole = async message => {
   let categoryChannel = guild.channels.cache.find(
     channel =>
       channel.type === ChannelType.GuildCategory &&
-      channel.name === categoryName,
+      channel.name.includes(categoryName),
   );
 
   if (!categoryChannel) {
@@ -33,7 +33,7 @@ const createChannelAndRole = async message => {
   try {
     const role = await guild.roles.create({
       name: roleName,
-      color: 'Blue',
+      color: 'Random',
       permissions: [
         PermissionsBitField.Flags.ViewChannel,
         PermissionsBitField.Flags.SendMessages,
