@@ -12,6 +12,7 @@ import {
   farewellUser,
   createRole,
 } from './commands/index.js';
+import tellme from './commands/tellme.js';
 
 const logger = winston('app.js');
 
@@ -58,12 +59,16 @@ const commands = {
       :question: help - Display available commands and their descriptions.
     `);
   },
+  tellme,
 };
 
 client.on('messageCreate', async message => {
   if (message.author.bot || !message.content.startsWith(prefix)) return;
   const allowedUsersList = allowedUsers.split(','); // List of allowed bot operators
-  if (!allowedUsersList.includes(message.author.id.toString())) {
+  if (
+    !allowedUsersList.includes(message.author.id.toString()) &&
+    !message.content.includes('tellme')
+  ) {
     message.channel.send('You are not allowed to use this bot.');
     return;
   }
