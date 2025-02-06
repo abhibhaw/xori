@@ -9,7 +9,7 @@ const farewellUser = message => {
       const name = member.displayName;
       await member.roles.set([]);
       message.channel.send(
-        `🎉 A special farewell to our amazing teammate ${name}! 🌟 Thank you for all the wonderful memories and incredible contributions. We'll miss having you around! Wishing you the brightest success in your new adventures! 🚀`,
+        `A special farewell to our amazing teammate ${name}! 🎉 Thank you for all the contributions and all the best for your future endeavour`,
       );
     } catch (error) {
       logger.error('Error adding role to member:', error);
